@@ -6,19 +6,19 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const categories = [
-    { name: "Bridal Sets", col: "md:col-span-2", image: "https://loremflickr.com/800/600/bridal,jewelry,gold/all" },
-    { name: "Necklaces", col: "md:col-span-1", image: "https://loremflickr.com/800/600/necklace,gold/all" },
-    { name: "Earrings", col: "md:col-span-1", image: "https://loremflickr.com/800/600/earrings,gold/all" },
-    { name: "Bangles & Bracelets", col: "md:col-span-2", image: "https://loremflickr.com/800/600/bangles,gold/all" },
-    { name: "Rings", col: "md:col-span-1", image: "https://loremflickr.com/800/600/ring,diamond,gold/all" },
-    { name: "Men's Jewellery", col: "md:col-span-1", image: "https://loremflickr.com/800/600/mens,jewelry/all" },
-    { name: "Children's Collection", col: "md:col-span-1", image: "https://loremflickr.com/800/600/child,jewelry/all" },
-    { name: "Custom Designs", col: "md:col-span-3", image: "https://loremflickr.com/800/600/jewelry,design/all" },
+    { name: "Bridal Sets", col: "md:col-span-2", image: "/images/Our-Collections/Bridal-Sets.png" },
+    { name: "Necklaces", col: "md:col-span-1", image: "/images/Our-Collections/Necklaces.png" },
+    { name: "Earrings", col: "md:col-span-1", image: "/images/Our-Collections/Earrings.png" },
+    { name: "Bangles & Bracelets", col: "md:col-span-2", image: "/images/Our-Collections/Bangles.png" },
+    { name: "Rings", col: "md:col-span-1", image: "/images/Our-Collections/Rings.png" },
+    { name: "Men's Jewellery", col: "md:col-span-1", image: "/images/Our-Collections/Men's.png" },
+    { name: "Children's Collection", col: "md:col-span-1", image: "/images/Our-Collections/Children's.png" },
+    { name: "Custom Designs", col: "md:col-span-3", image: "/images/Our-Collections/Custom.png" },
 ];
 
 export function ProductCategories() {
     return (
-        <section className="py-24 bg-transparent">
+        <section id="categories" className="py-24 bg-transparent">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <span className="text-gold tracking-[0.2em] text-xs uppercase block mb-3">Our Collections</span>
@@ -40,7 +40,7 @@ export function ProductCategories() {
                                     src={cat.image}
                                     alt={cat.name}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                             </div>
 

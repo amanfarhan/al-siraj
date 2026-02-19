@@ -1,75 +1,109 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const IMAGES = ["/images/image1.png", "/images/image2.png", "/images/image3.png"];
-const ROTATION_INTERVAL = 5000;
+const ROTATION_INTERVAL = 4000;
 
 export function HeroImageSlider() {
-    // 3 images = 120 degrees apart
-    // continuous rotation
-    // "No image distortion or scaling inconsistency" -> strict width/height
-    // "Equal spacing" -> 120 deg
-    // "Rotation pivot is exactly at the center" -> transform-origin centered
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const ROTATION_DURATION = 25; // 25 seconds for a full elegant spin
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => prev + 1);
+        }, ROTATION_INTERVAL);
 
-    // Calculate translateZ. 
-    // For an equilateral triangle of items (3 items), 
-    // r = (width / 2) / tan(180/n) 
-    // n=3, tan(60) ≈ 1.732.
-    // If item width is ~300px, r ≈ 150 / 1.732 ≈ 86px (too small for 3 items to not overlap heavily if they are wide)
-    // Actually we want them spaced out. Let's use a larger radius.
-    const TRANSLATE_Z = 400; // Adjusted for visual balance
+        return () => clearInterval(timer);
+    }, []);
+
+    // 3 items distributed on a circle
+    const theta = 360 / IMAGES.length; // 120 degrees
+    const radius = 350; // Distance from center
 
     return (
-        <div className="relative w-full h-[60vh] lg:h-[80vh] flex items-center justify-center perspective-[1200px] overflow-visible">
-            {/* 
-                Rotating Container 
-                - transform-style: preserve-3d is CRITICAL
-            */}
+        <div className="relative w-full h-[60vh] lg:h-[80vh] flex items-center justify-center perspective-[2000px] overflow-visible">
+            {/* 3D Orbiting Container */}
             <motion.div
-                className="relative w-full h-full flex items-center justify-center"
-                style={{ transformStyle: "preserve-3d" }}
-                animate={{ rotateY: [0, 360] }}
+                className="relative flex items-center justify-center transform-style-3d"
+                style={{
+                    transformStyle: "preserve-3d",
+                    width: "100%",
+                    height: "100%",
+                }}
+                animate={{
+                    rotateY: currentIndex * -theta,
+                }}
                 transition={{
-                    duration: ROTATION_DURATION,
-                    repeat: Infinity,
-                    ease: "linear" // "smooth natural... not jerky"
+                    duration: 1.5,
+                    ease: [0.25, 0.1, 0.25, 1.0], // Luxurious cubic-bezier
                 }}
             >
                 {IMAGES.map((src, index) => {
-                    const rotation = index * 120; // 0, 120, 240 degrees
+                    const itemRotation = index * theta;
+
+                    // Calculate if this item is currently the "front" one
+                    // We need to normalize the currentIndex to 0-2 range to compare, OR
+                    // simpler: check if the net rotation makes it face 0deg.
+                    // Net Angle = itemRotation + (currentIndex * -theta)
+                    // We want Net Angle % 360 === 0 for FRONT.
+
+                    // Actually, let's use a simpler derived state for styling:
+                    const relativeIndex = (index - (currentIndex % IMAGES.length) + IMAGES.length) % IMAGES.length;
+                    const isFront = relativeIndex === 0;
 
                     return (
-                        <div
+                        <motion.div
                             key={index}
-                            className="absolute inset-0 flex items-center justify-center backface-visible"
+                            className="absolute flex flex-col items-center justify-center"
                             style={{
-                                transform: `rotateY(${rotation}deg) translateZ(${TRANSLATE_Z}px)`,
-                                transformStyle: "preserve-3d", // Ensure children (like shadow) move correctly if needed
+                                transformStyle: "preserve-3d",
+                                // Place item on the circle
+                                transform: `rotateY(${itemRotation}deg) translateZ(${radius}px)`,
                             }}
                         >
-                            {/* Container for Image + Shadow/Reflection */}
-                            <div className="relative w-[300px] md:w-[400px] aspect-square flex flex-col items-center justify-center transition-transform hover:scale-110 duration-500">
-                                <img
-                                    src={src}
-                                    alt={`Jewellery Display ${index + 1}`}
-                                    className="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]"
-                                    draggable={false}
-                                />
+                            {/* 
+                                Counter-rotate to face viewer (Billboarding)
+                                We animate this counter-rotation to match the container's rotation.
+                                Formula: - (itemRotation + containerRotation)
+                                containerRotation = currentIndex * -theta
+                                So: -(itemRotation - currentIndex * theta) = (currentIndex * theta) - itemRotation
+                            */}
+                            <motion.div
+                                className="relative flex flex-col items-center justify-center"
+                                animate={{
+                                    rotateY: (currentIndex * theta) - itemRotation,
+                                    scale: isFront ? 1 : 0.85,
+                                    opacity: isFront ? 1 : 0.6,
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    ease: [0.25, 0.1, 0.25, 1.0],
+                                }}
+                            >
+                                <motion.div
+                                    className="relative w-[300px] md:w-[450px] aspect-square flex flex-col items-center justify-center cursor-pointer"
+                                    whileHover={{ scale: isFront ? 1.05 : 0.85 }} // Only slight hover if front
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                >
+                                    <img
+                                        src={src}
+                                        alt={`Jewellery Display ${index + 1}`}
+                                        className="w-full h-full object-contain"
+                                        draggable={false}
+                                    />
 
-                                {/* Simple Reflection/Shadow */}
-                                <div className="absolute -bottom-8 w-3/4 h-4 bg-black/30 blur-xl rounded-[100%]" />
-                            </div>
-                        </div>
+                                    {/* Dynamic Reflection/Shadow */}
+                                    {/* Enhanced shadow for depth perception */}
+                                    <div className="absolute -bottom-10 w-2/3 h-6 bg-black/40 blur-2xl rounded-[100%]" />
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
                     );
                 })}
             </motion.div>
 
-            {/* Global Subtle glow fixed behind the ring */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.1),transparent_70%)] pointer-events-none -z-10" />
+
         </div>
     );
 }

@@ -67,9 +67,7 @@ export function Showrooms() {
                                 <div className="border-t border-white/10 my-4 pt-4 text-xs text-cream/50 tracking-widest flex items-center justify-center gap-2">
                                     <Clock size={12} /> {showroom.hours}
                                 </div>
-                                <Button variant="outline" size="sm" className="w-full mt-2">
-                                    Get Directions
-                                </Button>
+
                             </div>
                         </motion.div>
                     ))}

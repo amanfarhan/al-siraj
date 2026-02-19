@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 
+import Image from "next/image";
+
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "Collections", href: "#collections" },
@@ -17,45 +19,35 @@ const navLinks = [
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
-        <nav
-            className={cn(
-                "fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-transparent",
-                scrolled ? "bg-black/60 backdrop-blur-md border-white/5 py-3 shadow-xl" : "bg-transparent py-6"
-            )}
-        >
+        <nav className="absolute top-0 left-0 w-full z-50 border-b border-transparent flex items-center bg-transparent py-4">
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="font-playfair text-2xl md:text-3xl text-gold tracking-widest uppercase flex flex-col items-center md:items-start group">
-                    <span>Al Siraj</span>
-                    <span className="text-[10px] md:text-xs tracking-[0.6em] text-cream group-hover:text-gold transition-colors -mt-1 block">Jewellery</span>
+                <Link href="/" className="block relative h-12 md:h-16 w-auto transition-transform hover:scale-105 flex items-center">
+                    <Image
+                        src="/images/Al_Siraj_Logo_v3.png"
+                        alt="Al Siraj Jewellery"
+                        width={160}
+                        height={64}
+                        className="object-contain w-auto h-full"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-10">
+                <div className="hidden md:flex items-center space-x-12">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="relative text-xs uppercase tracking-[0.2em] text-cream hover:text-gold transition-colors group py-2"
+                            className="relative text-sm uppercase tracking-[0.2em] text-cream hover:text-gold transition-colors group py-3"
                         >
                             {link.name}
-                            <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full shadow-[0_0_10px_#D4AF37]" />
+                            <span className="absolute left-0 bottom-1 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full shadow-[0_0_10px_#D4AF37]" />
                         </Link>
                     ))}
-                    <Button variant="outline" size="sm" className="ml-4">
-                        Enquire Now
-                    </Button>
+
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -88,9 +80,7 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <div className="pt-4">
-                                <Button variant="primary" size="sm" onClick={() => setIsOpen(false)}>
-                                    Enquire Now
-                                </Button>
+
                             </div>
                         </div>
                     </motion.div>

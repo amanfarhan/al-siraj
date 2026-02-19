@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { HeroImageSlider } from "@/components/ui/HeroImageSlider";
@@ -23,7 +24,7 @@ export function Hero() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     {/* Left Column: Text Content */}
                     <motion.div
-                        className="text-center lg:text-left order-2 lg:order-1"
+                        className="text-center lg:text-left order-2 lg:order-1 lg:pl-20"
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
@@ -40,12 +41,16 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
-                            <Button variant="primary" size="lg" className="shadow-[0_4px_20px_rgba(212,175,55,0.3)]">
-                                Explore Our Legacy
-                            </Button>
-                            <Button variant="outline" size="lg" className="backdrop-blur-sm bg-black/20 border-white/20">
-                                View Collections
-                            </Button>
+                            <Link href="#about">
+                                <Button variant="primary" size="lg" className="shadow-[0_4px_20px_rgba(212,175,55,0.3)]">
+                                    Our Legacy
+                                </Button>
+                            </Link>
+                            <Link href="#categories">
+                                <Button variant="outline" size="lg" className="backdrop-blur-sm bg-black/20 border-white/20">
+                                    Collections
+                                </Button>
+                            </Link>
                         </div>
                     </motion.div>
 

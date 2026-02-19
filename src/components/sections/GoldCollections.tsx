@@ -2,22 +2,23 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 
 const collections = [
     {
         title: "24KT Pure Gold",
         description: "Experience the unmatched purity and radiance of our finest 24 Karat gold collection.",
-        kara: "24KT"
+        image: "/images/24kt.png"
     },
     {
         title: "22KT Traditional",
         description: "Timeless designs that celebrate heritage and culture, crafted in classic 22 Karat gold.",
-        kara: "22KT"
+        image: "/images/22kt.png"
     },
     {
         title: "18KT Contemporary",
         description: "Modern elegance meets everyday luxury in our sophisticated 18 Karat gold selection.",
-        kara: "18KT"
+        image: "/images/18kt.png"
     }
 ];
 
@@ -55,9 +56,14 @@ export function GoldCollections() {
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10">
-                                {/* Visual Placeholder for Jewellery Image */}
-                                <div className="w-full h-64 bg-black/20 mb-8 flex items-center justify-center border border-white/5 group-hover:border-gold/20 transition-colors">
-                                    <div className="text-gold/20 font-playfair text-6xl opacity-50">{item.kara}</div>
+                                {/* Jewellery Image */}
+                                <div className="w-full h-64 relative mb-8 flex items-center justify-center border border-white/5 group-hover:border-gold/20 transition-colors overflow-hidden">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.title}
+                                        fill
+                                        className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                                    />
                                 </div>
 
                                 <h3 className="font-playfair text-2xl text-gold mb-3">{item.title}</h3>

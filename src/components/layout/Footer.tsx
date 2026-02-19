@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from "lucide-react";
 
 export function Footer() {
@@ -7,8 +8,16 @@ export function Footer() {
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     {/* Brand */}
-                    <div className="text-center md:text-left">
-                        <h2 className="font-playfair text-3xl text-gold mb-4">Al Siraj Jewellery</h2>
+                    <div className="text-center md:text-left flex flex-col items-center md:items-start">
+                        <Link href="/" className="inline-block mb-6 relative h-20 w-auto hover:scale-105 transition-transform">
+                            <Image
+                                src="/images/Al_Siraj_Logo_v3.png"
+                                alt="Al Siraj Jewellery"
+                                width={180}
+                                height={80}
+                                className="object-contain h-full w-auto"
+                            />
+                        </Link>
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs mx-auto md:mx-0">
                             Abu Dhabi&apos;s trusted destination for exquisite gold craftsmanship since 1999. Where tradition meets timeless elegance.
                         </p>

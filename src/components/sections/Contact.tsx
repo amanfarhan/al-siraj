@@ -56,11 +56,7 @@ export function Contact() {
                             </div>
                         </div>
 
-                        <div className="mt-16 flex justify-center">
-                            <Button variant="outline" className="gap-2 px-8 py-6 text-sm backdrop-blur-sm bg-black/20 border-gold/30 hover:bg-gold/10">
-                                <MessageCircle size={18} /> Chat on WhatsApp
-                            </Button>
-                        </div>
+
                     </div>
                 </div>
             </div>
