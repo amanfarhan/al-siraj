@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { HeroImageSlider } from "@/components/ui/HeroImageSlider";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-transparent py-20 lg:py-0">
+        <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-16 pb-8 lg:py-0">
             {/* Floating Elements (Subtle Gold Dust) */}
             <motion.div
                 className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold/5 rounded-full blur-[100px]"
@@ -20,53 +19,119 @@ export function Hero() {
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            <div className="container relative z-10 px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    {/* Left Column: Text Content */}
+            <div className="container relative z-10 px-6 w-full">
+
+                {/* ── MOBILE LAYOUT (hidden on lg+) ── */}
+                <div className="flex flex-col items-center lg:hidden">
+                    {/* 1. Heading */}
                     <motion.div
-                        className="text-center lg:text-left order-2 lg:order-1 lg:pl-20"
+                        className="text-center w-full mb-2 sm:mb-6"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
+                    >
+                        <span className="text-gold tracking-[0.5em] text-[10px] sm:text-xs uppercase mb-2 sm:mb-3 block drop-shadow-md">
+                            Since 1999
+                        </span>
+                        <h1 className="font-playfair text-6xl sm:text-7xl md:text-7xl text-cream mb-0 leading-tight drop-shadow-2xl">
+                            Al Siraj <span className="text-gold block mt-1 drop-shadow-lg">Jewellery</span>
+                        </h1>
+                    </motion.div>
+
+                    {/* 2. Image Slider */}
+                    <motion.div
+                        className="w-full"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                    >
+                        <HeroImageSlider />
+                    </motion.div>
+
+                    {/* 3. Description & Buttons */}
+                    <motion.div
+                        className="text-center w-full mt-4 sm:mt-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                    >
+                        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4 sm:mb-5 shadow-[0_0_10px_#D4AF37]" />
+                        <p className="font-montserrat text-cream/90 text-xs sm:text-sm max-w-[300px] sm:max-w-md mx-auto leading-relaxed tracking-wide mb-6 sm:mb-8 drop-shadow-md font-light">
+                            Where Tradition Meets Timeless Elegance. For over two decades, Al Siraj Jewellery has been Abu Dhabi&apos;s trusted destination for exquisite gold craftsmanship.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4 sm:px-0">
+                            <Button
+                                variant="primary"
+                                size="lg"
+                                className="shadow-[0_4px_20px_rgba(212,175,55,0.3)] w-full sm:w-auto"
+                                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                            >
+                                Our Legacy
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="backdrop-blur-sm bg-black/20 border-white/20 w-full sm:w-auto"
+                                onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+                            >
+                                Collections
+                            </Button>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* ── DESKTOP LAYOUT (hidden below lg) ── */}
+                <div className="hidden lg:grid grid-cols-2 gap-16 items-center">
+                    {/* Left Column: Full Text */}
+                    <motion.div
+                        className="text-left pl-20"
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
                     >
-                        <span className="text-gold tracking-[0.5em] text-xs md:text-sm uppercase mb-4 block drop-shadow-md">
+                        <span className="text-gold tracking-[0.5em] text-sm uppercase mb-4 block drop-shadow-md">
                             Since 1999
                         </span>
-                        <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl text-cream mb-6 leading-tight drop-shadow-2xl">
+                        <h1 className="font-playfair text-7xl xl:text-8xl text-cream mb-6 leading-tight drop-shadow-2xl">
                             Al Siraj <span className="text-gold block mt-2 drop-shadow-lg">Jewellery</span>
                         </h1>
-                        <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto lg:mx-0 mb-8 shadow-[0_0_10px_#D4AF37]" />
-                        <p className="font-montserrat text-cream/90 text-sm md:text-base max-w-2xl mx-auto lg:mx-0 leading-loose tracking-wide mb-10 drop-shadow-md font-light">
-                            Where Tradition Meets Timeless Elegance. For over two decades, Al Siraj Jewellery has been Abu Dhabi’s trusted destination for exquisite gold craftsmanship.
+                        <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-8 shadow-[0_0_10px_#D4AF37]" />
+                        <p className="font-montserrat text-cream/90 text-base max-w-2xl leading-loose tracking-wide mb-10 drop-shadow-md font-light">
+                            Where Tradition Meets Timeless Elegance. For over two decades, Al Siraj Jewellery has been Abu Dhabi&apos;s trusted destination for exquisite gold craftsmanship.
                         </p>
-
-                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
-                            <Link href="#about">
-                                <Button variant="primary" size="lg" className="shadow-[0_4px_20px_rgba(212,175,55,0.3)]">
-                                    Our Legacy
-                                </Button>
-                            </Link>
-                            <Link href="#categories">
-                                <Button variant="outline" size="lg" className="backdrop-blur-sm bg-black/20 border-white/20">
-                                    Collections
-                                </Button>
-                            </Link>
+                        <div className="flex items-center justify-start gap-6">
+                            <Button
+                                variant="primary"
+                                size="lg"
+                                className="shadow-[0_4px_20px_rgba(212,175,55,0.3)]"
+                                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                            >
+                                Our Legacy
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="backdrop-blur-sm bg-black/20 border-white/20"
+                                onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+                            >
+                                Collections
+                            </Button>
                         </div>
                     </motion.div>
 
                     {/* Right Column: Image Slider */}
                     <motion.div
-                        className="relative flex justify-center lg:justify-end order-1 lg:order-2"
+                        className="relative flex justify-end"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
                     >
-                        {/* Enlarged Container for "Perfect Fit" */}
-                        <div className="w-full max-w-full lg:max-w-4xl xl:max-w-5xl relative">
+                        <div className="w-full max-w-4xl xl:max-w-5xl relative">
                             <HeroImageSlider />
                         </div>
                     </motion.div>
                 </div>
+
             </div>
 
             {/* Scroll Indicator */}

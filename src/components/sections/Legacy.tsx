@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Legacy() {
     return (
@@ -45,16 +46,25 @@ export function Legacy() {
                         className="relative"
                     >
                         <div className="aspect-[4/5] bg-[#3a0a13] border border-gold/10 relative overflow-hidden group">
-                            {/* Placeholder for Founder Image or Store interior */}
-                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black via-transparent to-transparent opacity-60">
-                                {/* Decorative elements */}
+                            {/* Founder Image */}
+                            <Image 
+                                src="/images/ceo.png" 
+                                alt="Eruvathu Kizhakkethody Srajutty - Founder & CEO" 
+                                fill 
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#2a070e] via-[#2a070e]/40 to-transparent opacity-80 z-0">
+                                {/* Gradient for text readability */}
                             </div>
-                            <div className="absolute inset-0 flex items-center justify-center text-gold/10 font-playfair text-8xl opacity-20">
+                            
+                            <div className="absolute inset-0 flex items-center justify-center text-gold/10 font-playfair text-8xl opacity-30 pointer-events-none z-0">
                                 1999
                             </div>
-                            <div className="absolute bottom-8 left-8 right-8 text-center border-t border-gold/30 pt-4">
-                                <span className="text-gold uppercase tracking-widest text-xs">Eruvathu Kizhakkethody Srajutty</span>
-                                <span className="text-cream/50 text-[10px] block mt-1">Founder & CEO</span>
+                            
+                            <div className="absolute bottom-8 left-8 right-8 text-center border-t border-gold/40 pt-4 z-10 backdrop-blur-sm bg-black/20 md:backdrop-blur-none md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none">
+                                <span className="text-gold uppercase tracking-widest text-xs drop-shadow-md">Eruvathu Kizhakkethody Srajutty</span>
+                                <span className="text-cream/90 text-[10px] block mt-1 drop-shadow-md">Founder & CEO</span>
                             </div>
                         </div>
 

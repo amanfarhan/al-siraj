@@ -25,9 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth overflow-x-hidden" suppressHydrationWarning>
       <body
         className={`${playfair.variable} ${montserrat.variable} antialiased font-montserrat flex flex-col min-h-screen text-cream overflow-x-hidden`}
+        suppressHydrationWarning
       >
         {/* Global Velvet Background System */}
         <div className="fixed inset-0 -z-50">

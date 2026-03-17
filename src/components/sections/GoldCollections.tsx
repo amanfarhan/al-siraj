@@ -71,7 +71,12 @@ export function GoldCollections() {
                                     {item.description}
                                 </p>
 
-                                <Button variant="outline" size="sm" className="w-full border-white/10 group-hover:border-gold group-hover:bg-gold group-hover:text-velvet">
+                                <Button 
+                                    variant="outline" 
+                                    size="sm" 
+                                    className="w-full border-white/10 group-hover:border-gold group-hover:bg-gold group-hover:text-velvet"
+                                    onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+                                >
                                     View Collection
                                 </Button>
                             </div>

@@ -8,6 +8,7 @@ const ROTATION_INTERVAL = 4000;
 
 export function HeroImageSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [radius, setRadius] = useState(350); // Default for SSR
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -17,12 +18,24 @@ export function HeroImageSlider() {
         return () => clearInterval(timer);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 380) setRadius(100); // Very small mobiles
+            else if (window.innerWidth < 640) setRadius(120); // Mobile
+            else if (window.innerWidth < 1024) setRadius(250); // Tablet
+            else setRadius(350); // Desktop
+        };
+        
+        handleResize(); // Initial check
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     // 3 items distributed on a circle
     const theta = 360 / IMAGES.length; // 120 degrees
-    const radius = 350; // Distance from center
 
     return (
-        <div className="relative w-full h-[60vh] lg:h-[80vh] flex items-center justify-center perspective-[2000px] overflow-visible">
+        <div className="relative w-full h-[38vh] min-h-[300px] lg:min-h-0 lg:h-[80vh] flex items-center justify-center perspective-[2000px] overflow-hidden lg:overflow-visible">
             {/* 3D Orbiting Container */}
             <motion.div
                 className="relative flex items-center justify-center transform-style-3d"
@@ -82,20 +95,20 @@ export function HeroImageSlider() {
                                 }}
                             >
                                 <motion.div
-                                    className="relative w-[300px] md:w-[450px] aspect-square flex flex-col items-center justify-center cursor-pointer"
+                                    className="relative w-[180px] sm:w-[220px] md:w-[350px] lg:w-[450px] aspect-square flex flex-col items-center justify-center cursor-pointer"
                                     whileHover={{ scale: isFront ? 1.05 : 0.85 }} // Only slight hover if front
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                     <img
                                         src={src}
                                         alt={`Jewellery Display ${index + 1}`}
-                                        className="w-full h-full object-contain"
+                                        className="w-full h-full object-cover rounded-xl"
                                         draggable={false}
                                     />
 
                                     {/* Dynamic Reflection/Shadow */}
                                     {/* Enhanced shadow for depth perception */}
-                                    <div className="absolute -bottom-10 w-2/3 h-6 bg-black/40 blur-2xl rounded-[100%]" />
+                                    <div className="absolute -bottom-6 md:-bottom-10 w-2/3 h-4 md:h-6 bg-black/40 blur-xl md:blur-2xl rounded-[100%]" />
                                 </motion.div>
                             </motion.div>
                         </motion.div>

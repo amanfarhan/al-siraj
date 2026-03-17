@@ -56,7 +56,23 @@ export function Contact() {
                             </div>
                         </div>
 
-
+                        <div className="mt-16 text-center">
+                            <a 
+                                href="https://wa.me/97126347640" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-block"
+                            >
+                                <Button 
+                                    variant="outline" 
+                                    size="lg" 
+                                    className="flex items-center justify-center gap-3 px-10 group"
+                                >
+                                    <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    Chat on WhatsApp
+                                </Button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
