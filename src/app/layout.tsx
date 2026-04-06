@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* Global Velvet Background System */}
         <div className="fixed inset-0 -z-50">
           <div
-            className="absolute inset-0 bg-cover bg-no-repeat bg-top md:bg-center animate-luxuryFlow"
+            className="absolute inset-0 bg-cover bg-no-repeat bg-center md:animate-luxuryFlow"
             style={{
               backgroundImage: "url('/images/premium-velvet.jpg')",
             }}
