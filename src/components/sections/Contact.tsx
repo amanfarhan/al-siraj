@@ -66,7 +66,7 @@ export function Contact() {
                                 <Button 
                                     variant="outline" 
                                     size="lg" 
-                                    className="flex items-center justify-center gap-3 px-10 group"
+                                    className="flex items-center justify-center gap-3 px-6 md:px-10 group whitespace-nowrap"
                                 >
                                     <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                     Chat on WhatsApp
