@@ -24,7 +24,7 @@ export function Navbar() {
         <nav className="absolute top-0 left-0 w-full z-50 border-b border-transparent flex items-center bg-transparent py-4">
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="block relative h-12 md:h-16 w-auto transition-transform hover:scale-105 flex items-center">
+                <Link href="/" className="block relative h-16 md:h-20 w-auto transition-transform hover:scale-105 flex items-center">
                     <Image
                         src="/images/Al_Siraj_Logo_v3.png"
                         alt="Al Siraj Jewellery"

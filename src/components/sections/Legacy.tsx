@@ -43,9 +43,9 @@ export function Legacy() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="relative"
+                        className="relative max-w-md mx-auto w-full md:ml-auto"
                     >
-                        <div className="aspect-[4/5] bg-[#3a0a13] border border-gold/10 relative overflow-hidden group">
+                        <div className="aspect-[4/5] bg-[#3a0a13] border border-gold/10 relative overflow-hidden group rounded-sm shadow-xl">
                             {/* Founder Image */}
                             <Image 
                                 src="/images/ceo.png" 

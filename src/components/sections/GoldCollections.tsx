@@ -66,7 +66,7 @@ export function GoldCollections() {
                                     />
                                 </div>
 
-                                <h3 className="font-playfair text-2xl text-gold mb-3">{item.title}</h3>
+                                <h3 className="font-playfair text-2xl text-gold mb-3 lining-nums">{item.title}</h3>
                                 <p className="text-sm text-cream/70 leading-relaxed mb-8 min-h-[60px]">
                                     {item.description}
                                 </p>

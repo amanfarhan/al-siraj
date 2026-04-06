@@ -6,7 +6,7 @@ import { HeroImageSlider } from "@/components/ui/HeroImageSlider";
 
 export function Hero() {
     return (
-        <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-16 pb-8 lg:py-0">
+        <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-16 lg:py-0">
             {/* Floating Elements (Subtle Gold Dust) */}
             <motion.div
                 className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold/5 rounded-full blur-[100px]"
@@ -19,7 +19,7 @@ export function Hero() {
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            <div className="container relative z-10 px-6 w-full">
+            <div className="container mx-auto relative z-10 px-6 w-full">
 
                 {/* ── MOBILE LAYOUT (hidden on lg+) ── */}
                 <div className="flex flex-col items-center lg:hidden">
@@ -136,7 +136,7 @@ export function Hero() {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 text-gold/50 flex flex-col items-center gap-2 z-10"
+                className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/50 flex-col items-center gap-2 z-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
