@@ -105,7 +105,7 @@ export function Showrooms() {
                             <div className="h-64 w-full relative overflow-hidden">
                                 <Image
                                     src={showroom.image}
-                                    alt={showroom.name}
+                                    alt={`${showroom.name} Gold Jewellery Abu Dhabi`}
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                                 />
@@ -116,7 +116,10 @@ export function Showrooms() {
                             </div>
 
                             <div className="p-8 relative">
-                                <h3 className="font-playfair text-2xl text-gold mb-2">{showroom.name}</h3>
+                                <h3 className="font-playfair text-2xl text-gold mb-1">{showroom.name}</h3>
+                                <span className="block text-cream/80 text-[10px] uppercase tracking-widest mb-3">
+                                    {showroom.name === 'World Trade Center' ? 'Diamond Jewellery UAE' : 'Gold Jewellery Abu Dhabi'}
+                                </span>
                                 <p className="text-cream/70 text-sm mb-4 flex items-center justify-center gap-2">
                                     <MapPin size={14} /> {showroom.location}
                                 </p>

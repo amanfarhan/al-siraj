@@ -20,6 +20,7 @@ export function Hero() {
             />
 
             <div className="container mx-auto relative z-10 px-6 w-full">
+                <h1 className="sr-only">Luxury Gold Jewellery in Abu Dhabi</h1>
 
                 {/* ── MOBILE LAYOUT (hidden on lg+) ── */}
                 <div className="flex flex-col items-center lg:hidden">
@@ -30,12 +31,12 @@ export function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
                     >
-                        <span className="text-gold tracking-[0.5em] text-[10px] sm:text-xs uppercase mb-2 sm:mb-3 block drop-shadow-md">
-                            Since 1999
-                        </span>
-                        <h1 className="font-playfair text-6xl sm:text-7xl md:text-7xl text-cream mb-0 leading-tight drop-shadow-2xl">
+                        <div className="text-gold tracking-[0.2em] sm:tracking-[0.3em] font-medium text-[10px] sm:text-xs uppercase mb-2 sm:mb-3 block drop-shadow-md">
+                            Premium Gold & Diamond Jewellery Abu Dhabi
+                        </div>
+                        <div className="font-playfair text-6xl sm:text-7xl md:text-7xl text-cream mb-0 leading-tight drop-shadow-2xl">
                             Al Siraj <span className="text-gold block mt-1 drop-shadow-lg">Jewellery</span>
-                        </h1>
+                        </div>
                     </motion.div>
 
                     {/* 2. Image Slider */}
@@ -89,12 +90,12 @@ export function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
                     >
-                        <span className="text-gold tracking-[0.5em] text-sm uppercase mb-4 block drop-shadow-md">
-                            Since 1999
-                        </span>
-                        <h1 className="font-playfair text-7xl xl:text-8xl text-cream mb-6 leading-tight drop-shadow-2xl">
+                        <div className="text-gold tracking-[0.3em] font-medium text-sm uppercase mb-4 block drop-shadow-md">
+                            Premium Gold & Diamond Jewellery Abu Dhabi
+                        </div>
+                        <div className="font-playfair text-7xl xl:text-8xl text-cream mb-6 leading-tight drop-shadow-2xl">
                             Al Siraj <span className="text-gold block mt-2 drop-shadow-lg">Jewellery</span>
-                        </h1>
+                        </div>
                         <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-8 shadow-[0_0_10px_#D4AF37]" />
                         <p className="font-montserrat text-cream/90 text-base max-w-2xl leading-loose tracking-wide mb-10 drop-shadow-md font-light">
                             Where Tradition Meets Timeless Elegance. For over two decades, Al Siraj Jewellery has been Abu Dhabi&apos;s trusted destination for exquisite gold craftsmanship.

@@ -6,21 +6,16 @@ import { ProductCategories } from "@/components/sections/ProductCategories";
 import { Showrooms } from "@/components/sections/Showrooms";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Contact } from "@/components/sections/Contact";
-import Link from "next/link";
 
-export default function Home() {
+export const metadata = {
+  title: "Gold Jewellery in Abu Dhabi | Al Siraj Jewellery",
+  description: "Explore premium gold jewellery in Abu Dhabi.",
+};
+
+export default function GoldJewelleryPage() {
   return (
     <div className="flex flex-col">
-      {/* Hidden SEO Internal Linking Structure */}
-      <nav style={{ display: "none" }} aria-hidden="true">
-        <h2>Our Main Collections</h2>
-        <ul>
-          <li><Link href="/gold-jewellery">Gold Jewellery in Abu Dhabi</Link></li>
-          <li><Link href="/diamond-jewellery">Diamond Jewellery UAE</Link></li>
-          <li><Link href="/bridal-jewellery">Bridal Jewellery Abu Dhabi</Link></li>
-        </ul>
-      </nav>
-
+      <h1 style={{ display: "none" }}>Gold Jewellery in Abu Dhabi</h1>
       <Hero />
       <GoldCollections />
       <Legacy />

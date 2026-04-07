@@ -14,9 +14,16 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Al Siraj Jewellery | Timeless Elegance",
-  description: "Exquisite gold craftsmanship since 1999. Al Siraj Jewellery offers a premium collection of 18KT, 21KT, 22KT, and 24KT gold jewellery.",
+export const metadata = {
+  title: "Gold Jewellery in Abu Dhabi | Al Siraj Jewellery",
+  description:
+    "Discover premium gold, diamond & bridal jewellery in Abu Dhabi at Al Siraj Jewellery.",
+  keywords: [
+    "gold jewellery Abu Dhabi",
+    "bridal jewellery UAE",
+    "diamond jewellery Abu Dhabi",
+    "22k gold Abu Dhabi","Gold jewellery dalma mall","Gold jewellery madinatzayed","Gold jewellery","jewellery shop in dubai"
+  ],
 };
 
 export default function RootLayout({
@@ -31,6 +38,22 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {/* Global Velvet Background System */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "JewelryStore",
+              name: "Al Siraj Jewellery",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Abu Dhabi",
+                addressCountry: "UAE"
+              },
+              telephone: "+97126347640"
+            }),
+          }}
+        />
         <div className="fixed inset-0 -z-50">
           <div
             className="absolute inset-0 bg-cover bg-no-repeat bg-center md:animate-luxuryFlow"

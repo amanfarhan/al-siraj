@@ -11,10 +11,9 @@ import Image from "next/image";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Collections", href: "#collections" },
-    { name: "About", href: "#about" },
-    { name: "Showrooms", href: "#showrooms" },
-    { name: "Contact", href: "#contact" },
+    { name: "Collections", href: "/#collections" },
+    { name: "About", href: "/#about" },
+    { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {

@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const IMAGES = ["/images/image1.png", "/images/image2.png", "/images/image3.png"];
+const ALT_TEXTS = [
+    "22KT Gold Bridal Necklace Set Abu Dhabi",
+    "Exquisite Diamond Jewellery Collection UAE",
+    "Premium Traditional Gold Craftsmanship Al Siraj"
+];
 const ROTATION_INTERVAL = 4000;
 
 export function HeroImageSlider() {
@@ -101,7 +106,7 @@ export function HeroImageSlider() {
                                 >
                                     <img
                                         src={src}
-                                        alt={`Jewellery Display ${index + 1}`}
+                                        alt={ALT_TEXTS[index]}
                                         className="w-full h-full object-cover rounded-xl"
                                         draggable={false}
                                     />
