@@ -20,7 +20,7 @@ const BLOG_POSTS = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://alsiraj-jewellery.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://alsirajuae.com";
 
   const staticRoutes = [
     "",
